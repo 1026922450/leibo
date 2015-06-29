@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+
+		<title> SmartAdmin </title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+			
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Basic Styles -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
+
+		<!-- SmartAdmin Styles : Please note (smartadmin-production.css) was created using LESS variables -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.min.css">
+
+		<!-- SmartAdmin RTL Support is under construction
+			 This RTL CSS will be released in version 1.5
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.min.css"> -->
+
+		<!-- We recommend you use "your_style.css" to override SmartAdmin
+		     specific styles this will also ensure you retrain your customization with each SmartAdmin update.
+		<link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css"> -->
+
+		<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/demo.min.css">
+
+		<!-- echarts 样式 -->
+		<link href="css/echarts/echartsHome.css" rel="stylesheet">
+		<script src="js/plugin/echarts/js/echarts.js"></script>
+    	<script src="js/plugin/echarts/codemirror.js"></script>
+		
+		 <link href="css/echarts/codemirror.css" rel="stylesheet">
+				
+		<!-- FAVICONS -->
+		<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon">
+
+		<!-- GOOGLE FONT -->
+		<link rel="stylesheet" href="css/google_font.css">
+
+		<link rel="apple-touch-icon" href="img/splash/sptouch-icon-iphone.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="img/splash/touch-icon-ipad.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="img/splash/touch-icon-iphone-retina.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="img/splash/touch-icon-ipad-retina.png">
+		
+		<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		
+		<!-- Startup image for web apps -->
+		<link rel="apple-touch-startup-image" href="img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+		<link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+		<link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
+
+	</head>
+	<body class="">
+
+		<!-- 头 -->
+		<header id="header">
+			<div id="logo-group">
+
+				<!-- 你的logo -->
+				<span id="logo">LOGO</span>
+				<!-- 你的logo 结束 -->
+
+				<!-- 需要处理的消息 -->
+				<span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 21 </b> </span>
+
+				<div class="ajax-dropdown">
+
+					<div class="btn-group btn-group-justified" data-toggle="buttons">
+						<label class="btn btn-default">
+							<input type="radio" name="activity" id="ajax/notify/mail.html">
+							Msgs (14) </label>
+						<label class="btn btn-default">
+							<input type="radio" name="activity" id="ajax/notify/notifications.html">
+							notify (3) </label>
+						<label class="btn btn-default">
+							<input type="radio" name="activity" id="ajax/notify/tasks.html">
+							Tasks (4) </label>
+					</div>
+					<!-- notification content -->
+					<div class="ajax-notifications custom-scroll">
+						<div class="alert alert-transparent">
+							<h4>Click a button to show messages here</h4>
+							This blank page message helps protect your privacy, or you can show the first message here automatically.
+						</div>
+						<i class="fa fa-lock fa-4x fa-border"></i>
+					</div>
+					<span> Last updated on: 12/12/2013 9:43AM
+						<button type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i> Loading..." class="btn btn-xs btn-default pull-right">
+							<i class="fa fa-refresh"></i>
+						</button> 
+					</span>
+				</div>
+			</div>
+
+			<div class="pull-right">
+				<div id="logout" class="btn-header transparent pull-right">
+					<span> <a href="login.html" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i class="fa fa-sign-out"></i></a> </span>
+				</div>
+
+				<div id="fullscreen" class="btn-header transparent pull-right">
+					<span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
+				</div>
+			</div>
+		</header>
+
+		<aside id="left-panel">
+			<div class="login-info">
+				<span>
+					<a href="javascript:void(0);" id="show-shortcut">
+						<img src="img/avatars/male.png" alt="me" class="online" /> 
+						<span>
+							张三
+						</span>
+					</a> 
+				</span>
+			</div>
+
+			<nav>
+				<ul>
+					<li class="active">
+						<a href="index.html" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">Dashboard</span></a>
+					</li>
+				</ul>
+			</nav>
+			<span class="minifyme" data-action="minifyMenu"> 
+				<i class="fa fa-arrow-circle-left hit"></i> 
+			</span>
+
+		</aside>
+		<!-- END NAVIGATION -->
+
+		<!-- MAIN PANEL -->
+		<div id="main" role="main">
+			<!-- RIBBON -->
+			<div id="ribbon">
+				<span class="ribbon-button-alignment"> 
+					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+						<i class="fa fa-refresh"></i>
+					</span> 
+				</span>
+
+				<!-- breadcrumb -->
+				<ol class="breadcrumb">
+					<li>Home</li><li>Dashboard</li>
+				</ol>
+				<!-- end breadcrumb -->
+
+			</div>
+			<!-- END RIBBON -->
+
+			<!-- MAIN CONTENT -->
+			<div id="content">
+				<div id="graphic" class="col-md-9">
+                <div id="forceContent" class="main"></div>
+                <!-- <div>
+                    <button type="button" class="btn btn-sm btn-success" onclick="refresh(true)">刷 新</button>
+
+                    <span id='wrong-message' style="color:red"></span>
+                </div> -->
+            </div><!--/span-->
+            
+	            <div  class="col-md-3">
+	            	<div id="forceContentAttr" class="main" style="overflow-y: auto;">
+	            		<form class="form-horizontal" id="attrForm">
+	            			<div class="class-group">
+	            				<h4>没有属性信息</h4>
+	            			</div>
+	            			<!-- <div class="class-group">
+	            				<h4>实体</h4>
+	            				<div class="form-group">
+	            					<label class="col-sm-4 control-label font-small">名称</label>
+	            					<div class="input-group input-group-sm col-sm-6">
+	            						<input class="form-control" type="text" value="陈磊" readonly="readonly"/>
+	            					</div>
+	            				</div>
+	            				<div class="form-group">
+	            					<label class="col-sm-4 control-label font-small">组</label>
+	            					<div class="input-group input-group-sm col-sm-6">
+	            						<input class="form-control" type="text" value="普遍用户" readonly="readonly"/>
+	            					</div>
+	            				</div>
+	            			</div> -->
+	            			
+	            			<!-- <div class="class-group">
+	            				<h4>属性</h4>
+	            					<div class="form-group">
+	            						<label class="col-sm-4 control-label font-small">出身年月</label>
+	            						<div class="input-group input-group-sm col-sm-6">
+	            							<input class="form-control" type="text" value="1993-1-1" />
+	            						</div>
+	            					</div>
+	            					<div class="form-group">
+	            						<label class="col-sm-4 control-label font-small">身高</label>
+	            						<div class="input-group input-group-sm col-sm-6">
+	            							<input class="form-control" type="text" value="166" />
+	            						</div>
+	            					</div>
+	            					<div class="form-group">
+	            						<label class="col-sm-4 control-label font-small">性别</label>
+	            						<div class="input-group input-group-sm col-sm-6">
+	            							<input class="form-control" type="text" value="1" />
+	            						</div>
+	            					</div>
+	            				</div> 
+		            				<div class="class-group">
+		            					<div class="form-group">
+		            						<label class="col-sm-4 control-label font-small"></label>
+		            						<div class="input-group input-group-sm col-sm-6">
+			            						<input class="btn radius btn-default" type="button" value="模拟">
+		            						</div>
+		            					</div>
+		            				</div> -->
+	            			</form>
+	            	</div>
+	            </div>
+			</div>
+		</div>
+
+		<!-- PAGE FOOTER -->
+		<div class="page-footer">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6">
+					<span class="txt-color-white">XXXXXXXXXXXXXXXXXXXXXX</span>
+				</div>
+
+				<div class="col-xs-6 col-sm-6 text-right hidden-xs">
+					<div class="txt-color-white inline-block">
+						<i class="txt-color-blueLight hidden-mobile">XXXXXXXXXXXXXXXXXXXXXXX</i></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END PAGE FOOTER -->
+
+		<!-- 页面加载进度自动指示和ajax导航效果 -->
+		<script data-pace-options='{ "restartOnRequestAfter": true }' src="js/plugin/pace/pace.min.js"></script>
+
+		<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+		<script src="js/libs/jquery-2.0.2.min.js"></script>
+		<script>
+			if (!window.jQuery) {
+				document.write('<script src="js/libs/jquery-2.0.2.min.js"><\/script>');
+			}
+		</script>
+
+		<script src="js/libs/jquery-ui-1.10.3.min.js"></script>
+		<script>
+			if (!window.jQuery.ui) {
+				document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+			}
+		</script>
+
+		<!-- IMPORTANT: APP CONFIG -->
+		<script src="js/app.config.js"></script>
+
+		<!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
+		<script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> 
+
+		<!-- BOOTSTRAP JS -->
+		<script src="js/bootstrap/bootstrap.min.js"></script>
+
+		<!-- CUSTOM NOTIFICATION -->
+		<script src="js/notification/SmartNotification.min.js"></script>
+
+		<!-- JARVIS WIDGETS -->
+		<script src="js/smartwidgets/jarvis.widget.min.js"></script>
+
+		<!-- browser msie issue fix -->
+		<script src="js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+
+		<!-- FastClick: For mobile devices -->
+		<script src="js/plugin/fastclick/fastclick.min.js"></script>
+
+		<!-- Demo purpose only -->
+		<script src="js/demo.min.js"></script>
+
+		<!-- MAIN APP JS FILE -->
+		<script src="js/app.min.js"></script>
+
+		<!-- Full Calendar -->
+		<script src="js/plugin/fullcalendar/jquery.fullcalendar.min.js"></script>
+		
+		<!-- echarts插件 -->
+		<script src="js/plugin/echarts/echartsExample.js"></script>
+	</body>
+
+</html>

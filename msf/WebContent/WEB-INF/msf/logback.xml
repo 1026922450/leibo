@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+	<!--控制台日志 -->
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoder 可以指定字符集，对于中文输出有意义 -->
+		<encoder charset="UTF-8"> 
+			<pattern>%d{HH:mm:ss.SSS} %-5level %logger [%method - %line] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="service" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${LOG_ROOT_HOME}/msf/%d{yyyy-MM-dd}/msf.log</File>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${LOG_ROOT_HOME}/msf/%d{yyyy-MM-dd}/msf-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+			
+			<!-- 设置保存天数 -->
+			<MaxHistory>30</MaxHistory>
+			
+			<!-- 设置每个文件大小-->
+			<TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<MaxFileSize>100MB</MaxFileSize>
+			</TimeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+
+		<!--格式化输出：%d表示日期，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+		<encoder>
+			<pattern>%d{HH:mm:ss} %-5level %logger [%method - %line] - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.wulian.msf" level="DEBUG">
+		<appender-ref ref="service" />
+	</logger>
+
+	<logger name="com.wulian.msf" level="DEBUG">
+		<appender-ref ref="stdout" />
+	</logger>
+	<!-- 下面配置一些第三方包的日志过滤级别，用于避免刷屏 -->
+	<logger name="org.springframework" level="WARN" />
+	<logger name="org.apache" level="WARN" />
+
+</configuration> 
+
